@@ -8,12 +8,13 @@ Installation
 
 Use package
 -----------
-If you have use-package setup on your system loading almost-mono-themes is as simple as:
+If you have [straight.el](https://github.com/radian-software/straight.el) setup on your system loading almost-mono-themes is as simple as:
 
 ```lisp
-(use-package almost-mono-black-theme
+(use-package almost-mono-theme
+  :straight (:type git :host github :repo "Fybe/almost-mono")
   :config
-  (load-theme 'almost-mono-black t))
+  (load-theme 'almost-mono t))
 ```
 
 Manual installation
@@ -30,4 +31,4 @@ You can set your paths by adding these lines to your <code>.emacs.d</code> or <c
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ```
 
-You should now be able to load almost-mono-themes with <code>M-x load-theme RET almost-mono-{black, white, etc.} RET</code>!
+You should now be able to load almost-mono-themes with <code>M-x load-theme RET almost-mono RET</code>!
