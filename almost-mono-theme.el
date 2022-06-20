@@ -34,12 +34,12 @@
   '((background . "#000000")
     (foreground . "#ffffff")
     (weak       . "#aaaaaa")
-    (weaker     . "#666666")
-    (weakest    . "#222222")
-    (highlight  . "#8799f2")
+    (weaker     . "#555555")
+    (weakest    . "#333333")
+    (highlight  . "#6b83f9")
     (warning    . "#f28799")
     (success    . "#99f287")
-    (string     . "#87cef2")))
+    (string     . "#b5e4fc")))
 
 (defmacro almost-mono-theme--with-colors (&rest body)
   "Execute BODY in a scope where the different colors are bound."
@@ -67,16 +67,17 @@
       (default (:background ,background :foreground ,foreground))
       (fringe  (:background ,background))
       (region  (:background ,weakest))
-      (show-paren-match (:foreground ,success :weight extra-bold))
-      (show-paren-mismatch (:foreground ,warning :weight extra-bold))
+      (show-paren-match (:foreground ,success :weight ultra-bold))
+      (show-paren-mismatch (:foreground ,warning :weight ultra-bold))
       (minibuffer-prompt (:weight extra-bold))
       (isearch (:background ,weak :foreground ,foreground :bold t))
       (lazy-highlight (:background ,weaker :foreground ,foreground))
       (link (:underline t))
       (highlight (:background ,weakest :weight ultra-bold))
 
-      (success (:foreground ,success))
-      (error   (:foreground ,warning))
+      (success (:foreground ,success :weight extra-bold))
+      (error   (:foreground ,warning :weight extra-bold))
+      (warning (:foreground ,warning :weight extra-bold))
 
       ;; mode line
       (mode-line (:background ,background :foreground ,foreground :weight extra-bold))
@@ -115,9 +116,6 @@
       (eshell-ls-special (:inherit eshell-ls-unreadable))
       (eshell-ls-symlink (:inherit eshell-ls-unreadable))
 
-      (eshell-syntax-highlighting-shell-command-face (:inherit success :weight extra-bold))
-      (eshell-syntax-highlighting-invalid-face (:inherit error :weight extra-bold))
-
       ;; hl line
       (hl-line (:background ,weakest))
       (highlight-current-line-face (:inherit hl-line))
@@ -139,7 +137,7 @@
       (corfu-default (:background ,background :foreground ,foreground))
 
       ;; whitespace-mode
-      (whitespace-tab (:background nil :foreground ,weakest))
+      (whitespace-tab (:background nil :foreground ,weaker))
       (whitespace-space (:background nil :foreground ,weakest))
       (whitespace-indentation (:background nil :foreground ,weakest))
 
