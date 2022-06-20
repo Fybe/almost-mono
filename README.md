@@ -19,15 +19,15 @@ If you have [straight.el](https://github.com/radian-software/straight.el) setup 
 
 Manual installation
 -------------------
-If you prefer, you can install almost-mono-themes manually by downloading the elisp files in this repo and place them somewhere in your <code>load-path</code> or <code>custom-theme-load-path</code> (see example below).
+If you prefer, you can install almost-mono-theme manually by downloading <code>almost-mono-theme.el</code> in this repo and placing it somewhere in your <code>load-path</code> or <code>custom-theme-load-path</code> (see example below).
 
 You can set your paths by adding these lines to your <code>.emacs.d</code> or <code>.emacs.d/init.el</code>:
 
 ```lisp
-;; Put the theme file almost-mono-black-theme.el in your load path
+;; Put the theme file almost-mono-theme.el in your load path
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-;; Put the individual theme files almost-mono-black-theme.el in your theme load path
+;; Put the theme file almost-mono-theme.el in your theme load path
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ```
 
