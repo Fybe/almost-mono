@@ -1,12 +1,13 @@
-;;; almost-mono-themes.el --- Almost monochromatic color themes -*- lexical-binding: t; -*-
+;;; almost-mono-theme.el --- Almost monochromatic color theme -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2019 - 2022 John Olsson
+;; Copyright (C) 2022        Finn Bender
 
 ;; Author: John Olsson <john@cryon.se>
-;; Maintainer: John Olsson <john@cryon.se>
-;; URL: https://github.com/cryon/almost-mono-themes
+;; Maintainer: Finn Bender <mailobender77x@gmail.com>
+;; URL: https://github.com/Fybe/almost-mono-black
 ;; Created: 9th May 2019
-;; Version: 1.0.0
+;; Version: 1.1.0
 ;; Keywords: faces
 ;; Package-Requires: ((emacs "24"))
 
@@ -25,67 +26,37 @@
 
 ;;; Commentary:
 
-;; A suite of almost monochrome Emacs themes
+;; An almost monochrome Emacs theme.
 
 ;;; Code:
 
-(defconst almost-mono-themes-colors
-  '((white . ((background . "#ffffff")
-	      (foreground . "#000000")
-	      (weak	  . "#888888")
-	      (weaker	  . "#dddddd")
-	      (weakest    . "#efefef")
-	      (highlight  . "#fda50f")
-	      (warning	  . "#ff0000")
-	      (success	  . "#00ff00")
-	      (string     . "#3c5e2b")))
+(defconst almost-mono-theme-colors
+  '((background . "#000000")
+    (foreground . "#ffffff")
+    (weak       . "#aaaaaa")
+    (weaker     . "#666666")
+    (weakest    . "#222222")
+    (highlight  . "#fda50f")
+    (warning    . "#ff0000")
+    (success    . "#00ff00")
+    (string     . "#a7bca4")))
 
-    (black . ((background . "#000000")
-	      (foreground . "#ffffff")
-	      (weak	  . "#aaaaaa")
-	      (weaker	  . "#666666")
-	      (weakest	  . "#222222")
-	      (highlight  . "#fda50f")
-	      (warning	  . "#ff0000")
-	      (success	  . "#00ff00")
-	      (string     . "#a7bca4")))
+(defmacro almost-mono-theme--with-colors (&rest body)
+  "Execute BODY in a scope where the different colors are bound."
+  `(let* ((colors     almost-mono-theme-colors)
 
-    (gray .  ((background . "#2b2b2b")
-	      (foreground . "#ffffff")
-	      (weak	  . "#aaaaaa")
-	      (weaker	  . "#666666")
-	      (weakest	  . "#222222")
-	      (highlight  . "#fda50f")
-	      (warning	  . "#ff0000")
-	      (success	  . "#00ff00")
-	      (string     . "#a7bca4")))
-
-    (cream . ((background . "#f0e5da")
-	      (foreground . "#000000")
-	      (weak	  . "#7d7165")
-	      (weaker	  . "#c4baaf")
-	      (weakest    . "#dbd0c5")
-	      (highlight  . "#fda50f")
-	      (warning	  . "#ff0000")
-	      (success	  . "#00ff00")
-	      (string     . "#3c5e2b")))))
-
-(defmacro almost-mono-themes--variant-with-colors (variant &rest body)
-  "Execute BODY in a scope where the different colors for given VARIANT is bound."
-  `(let* ((colors (or (cdr (assoc ,variant almost-mono-themes-colors))
-		      (error "No such theme variant")))
-	  (background (cdr (assoc 'background colors)))
-	  (foreground (cdr (assoc 'foreground colors)))
-	  (weak	      (cdr (assoc 'weak colors)))
-	  (weaker     (cdr (assoc 'weaker colors)))
-	  (weakest    (cdr (assoc 'weakest colors)))
-	  (highlight  (cdr (assoc 'highlight colors)))
-	  (warning    (cdr (assoc 'warning colors)))
-	  (success    (cdr (assoc 'success colors)))
-	  (string     (cdr (assoc 'string colors))))
+          (background (cdr (assoc 'background colors)))
+          (foreground (cdr (assoc 'foreground colors)))
+          (weak       (cdr (assoc 'weak colors)))
+          (weaker     (cdr (assoc 'weaker colors)))
+          (weakest    (cdr (assoc 'weakest colors)))
+          (highlight  (cdr (assoc 'highlight colors)))
+          (warning    (cdr (assoc 'warning colors)))
+          (success    (cdr (assoc 'success colors)))
+          (string     (cdr (assoc 'string colors))))
      ,@body))
 
-(defmacro almost-mono-themes--faces-spec ()
+(defmacro almost-mono-theme--faces-spec ()
   "Provide the faces specification."
   (quote
    (mapcar
@@ -105,10 +76,10 @@
 
       ;; mode line
       (mode-line (:box (:line-width -1 :color ,weaker)
-		       :background ,weakest :foreground ,foreground))
+                       :background ,weakest :foreground ,foreground))
 
       (mode-line-inactive (:box (:line-width -1 :color ,weaker)
-				:background ,background :foreground ,weaker))
+                                :background ,background :foreground ,weaker))
 
       ;; font lock
       (font-lock-keyword-face (:bold t))
@@ -178,28 +149,25 @@
       ))))
 
 
-(defun almost-mono-themes--variant-name (variant)
-  "Create symbol for color theme variant VARIANT."
-  (intern (format "almost-mono-%s" (symbol-name variant))))
-
-(defmacro almost-mono-themes--define-theme (variant)
-  "Define a theme for the almost-mono variant VARIANT."
-  (let ((name (almost-mono-themes--variant-name variant))
-        (doc (format "almost mono theme (%s version)" variant)))
+(defmacro almost-mono-theme--define-theme ()
+  "Define the almost-mono theme."
+  (let ((name 'almost-mono)
+        (doc "almost mono theme"))
     `(progn
        (deftheme ,name ,doc)
        (put ',name 'theme-immediate t)
-       (almost-mono-themes--variant-with-colors
-        ',variant
+       (almost-mono-theme--with-colors
         (apply 'custom-theme-set-faces ',name
-               (almost-mono-themes--faces-spec)))
+               (almost-mono-theme--faces-spec)))
        (provide-theme ',name))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
   (add-to-list 'custom-theme-load-path
-	       (file-name-as-directory (file-name-directory load-file-name))))
+               (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide 'almost-mono-themes)
+(almost-mono-theme--define-theme)
 
-;;; almost-mono-themes.el ends here
+(provide 'almost-mono-theme)
+
+;;; almost-mono-theme.el ends here
