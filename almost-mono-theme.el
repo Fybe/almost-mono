@@ -36,6 +36,7 @@
     (weak       . "#aaaaaa")
     (weaker     . "#666666")
     (weakest    . "#222222")
+    (weakester  . "#171717")
     (highlight  . "#fda50f")
     (warning    . "#ff0000")
     (success    . "#00ff00")
@@ -50,6 +51,7 @@
           (weak       (cdr (assoc 'weak colors)))
           (weaker     (cdr (assoc 'weaker colors)))
           (weakest    (cdr (assoc 'weakest colors)))
+          (weakester  (cdr (assoc 'weakester colors)))
           (highlight  (cdr (assoc 'highlight colors)))
           (warning    (cdr (assoc 'warning colors)))
           (success    (cdr (assoc 'success colors)))
@@ -66,71 +68,54 @@
       ;; default
       (default (:background ,background :foreground ,foreground))
       (fringe  (:background ,background))
-      (region  (:background ,highlight  :foreground ,foreground))
-      (show-paren-match (:background ,background :foreground ,success :bold t))
-      (show-paren-mismatch (:background ,background :foreground ,warning :bold t))
-      (minibuffer-prompt (:weight bold :foreground ,foreground))
+      (region  (:background ,weakest))
+      (show-paren-match (:foreground ,success :weight extra-bold))
+      (show-paren-mismatch (:foreground ,warning :weight extra-bold))
+      (minibuffer-prompt (:weight extra-bold  :foreground ,foreground))
       (isearch (:background ,weak :foreground ,foreground :bold t))
       (lazy-highlight (:background ,weaker :foreground ,foreground))
       (link (:underline t))
+      (highlight (:box (:line-width (-1 . -1) :color ,weak)
+                       :background ,background :foreground ,foreground))
+
+      (success (:foreground ,success))
+      (error   (:foreground ,warning))
 
       ;; mode line
-      (mode-line (:box (:line-width -1 :color ,weaker)
+      (mode-line (:box (:line-width -1 :color ,weak)
                        :background ,weakest :foreground ,foreground))
 
       (mode-line-inactive (:box (:line-width -1 :color ,weaker)
                                 :background ,background :foreground ,weaker))
 
       ;; font lock
-      (font-lock-keyword-face (:bold t))
-      (font-lock-function-name-face (:bold t))
-      (font-lock-variable-name-face (:foreground ,foreground))
-      (font-lock-warning-face (:foreground ,foreground :underline (:color ,warning :style wave)))
-      (font-lock-builtin-face (:bold t))
+      (font-lock-keyword-face (:foreground ,highlight :bold t))
+      (font-lock-function-name-face (:weight extra-bold))
       (font-lock-variable-name-face (:foreground ,foreground :italic t))
-      (font-lock-constant-face (:bold t :italic t))
-      (font-lock-type-face (:italic t))
-      (font-lock-preprocessor-face (:italic t))
+      (font-lock-warning-face (:foreground ,foreground :underline (:color ,warning :style wave)))
+      (font-lock-builtin-face (:bold t :foreground ,foreground))
+      (font-lock-constant-face (:foreground ,weak))
+      (font-lock-type-face (:foreground ,foreground))
+      (font-lock-preprocessor-face (:foreground, weak))
       (font-lock-comment-face (:foreground ,weak :italic t))
       (font-lock-string-face (:foreground ,string))
-      (font-lock-doc-face (:inherit font-lock-comment-face))
+      (font-lock-doc-face (:inherit font-lock-comment-face :weight semi-bold))
       (line-number (:foreground ,weaker))
       (linum (:inherit line-number))
       (vertical-border (:foreground ,weaker))
 
       ;; eshell
       (eshell-prompt (:foreground ,foreground :bold t))
-      (eshell-ls-directory (:foreground ,foreground :bold t))
+      (eshell-ls-directory (:foreground ,foreground :weight extra-bold))
       (eshell-ls-archive (:inherit eshell-ls-unreadable))
       (eshell-ls-backup (:inherit eshell-ls-unreadable))
-      (eshell-ls-clutter (:inherit eshell-ls-unreadable))
+      (eshell-ls-clutter (:foreground ,weak))
       (eshell-ls-executable (:inherit eshell-ls-unreadable))
       (eshell-ls-missing (:inherit eshell-ls-unreadable))
       (eshell-ls-product (:inherit eshell-ls-unreadable))
       (eshell-ls-readonly (:inherit eshell-ls-unreadable))
       (eshell-ls-special (:inherit eshell-ls-unreadable))
       (eshell-ls-symlink (:inherit eshell-ls-unreadable))
-
-      ;; company mode
-      (company-tooltip (:background ,weakest :foreground ,foreground))
-      (company-tooltip-selection (:background ,weaker :foreground ,foreground))
-      ;;(company-tooltip-search (:background "#ff0000" :foreground "#00ff00"))
-      (company-tooltip-common (:bold t))
-      (company-tooltip-common-selection (:bold t))
-      (company-scrollbar-bg (:background ,weaker))
-      (company-scrollbar-fg (:background ,weak))
-      (company-tooltip-annotation-selection (:background ,weaker :foreground ,foreground :italic t))
-      (company-tooltip-annotation (:background ,weakest :foreground ,weak :italic t))
-
-      ;; git gutter
-      (git-gutter:modified (:background ,highlight :foreground ,highlight))
-      (git-gutter:added (:background ,success :foreground ,success))
-      (git-gutter:deleted (:background ,warning :foreground ,warning))
-
-      ;; diff hl
-      (diff-hl-change (:background ,highlight :foreground ,highlight))
-      (diff-hl-insert (:background ,success :foreground ,success))
-      (diff-hl-delete (:background ,warning :foreground ,warning))
 
       ;; hl line
       (hl-line (:background ,weakest))
@@ -146,6 +131,20 @@
       ;; org mode
       (org-table (:foreground ,weak))
 
+      ;; corfu
+      (corfu-bar nil)
+      (corfu-border (:background ,weaker))
+      (corfu-current (:inherit highlight))
+      (corfu-default (:background ,background :foreground ,foreground))
+
+      ;; whitespace-mode
+      (whitespace-tab (:background nil :foreground ,weakest))
+      (whitespace-space (:background nil :foreground ,weakest))
+      (whitespace-indentation (:background nil :foreground ,weakest))
+
+      ;; solaire
+      (solaire-default-face (:background ,weakester))
+      (solaire-fring-face (:background ,weakester))
       ))))
 
 
