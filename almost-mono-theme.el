@@ -36,11 +36,10 @@
     (weak       . "#aaaaaa")
     (weaker     . "#666666")
     (weakest    . "#222222")
-    (weakester  . "#171717")
-    (highlight  . "#fda50f")
-    (warning    . "#ff0000")
-    (success    . "#00ff00")
-    (string     . "#a7bca4")))
+    (highlight  . "#8799f2")
+    (warning    . "#f28799")
+    (success    . "#99f287")
+    (string     . "#87cef2")))
 
 (defmacro almost-mono-theme--with-colors (&rest body)
   "Execute BODY in a scope where the different colors are bound."
@@ -51,7 +50,6 @@
           (weak       (cdr (assoc 'weak colors)))
           (weaker     (cdr (assoc 'weaker colors)))
           (weakest    (cdr (assoc 'weakest colors)))
-          (weakester  (cdr (assoc 'weakester colors)))
           (highlight  (cdr (assoc 'highlight colors)))
           (warning    (cdr (assoc 'warning colors)))
           (success    (cdr (assoc 'success colors)))
@@ -71,22 +69,18 @@
       (region  (:background ,weakest))
       (show-paren-match (:foreground ,success :weight extra-bold))
       (show-paren-mismatch (:foreground ,warning :weight extra-bold))
-      (minibuffer-prompt (:weight extra-bold  :foreground ,foreground))
+      (minibuffer-prompt (:weight extra-bold))
       (isearch (:background ,weak :foreground ,foreground :bold t))
       (lazy-highlight (:background ,weaker :foreground ,foreground))
       (link (:underline t))
-      (highlight (:box (:line-width (-1 . -1) :color ,weak)
-                       :background ,background :foreground ,foreground))
+      (highlight (:background ,weakest :weight ultra-bold))
 
       (success (:foreground ,success))
       (error   (:foreground ,warning))
 
       ;; mode line
-      (mode-line (:box (:line-width -1 :color ,weak)
-                       :background ,weakest :foreground ,foreground))
-
-      (mode-line-inactive (:box (:line-width -1 :color ,weaker)
-                                :background ,background :foreground ,weaker))
+      (mode-line (:background ,background :foreground ,foreground :weight extra-bold))
+      (mode-line-inactive (:background ,background :foreground ,weak))
 
       ;; font lock
       (font-lock-keyword-face (:foreground ,highlight :bold t))
@@ -103,9 +97,13 @@
       (line-number (:foreground ,weaker))
       (linum (:inherit line-number))
       (vertical-border (:foreground ,weaker))
+      (fill-column-indicator (:foreground ,weakest))
+      (window-divider (:foreground ,weakest))
+      (window-divider-first-pixel (:foreground ,weakest))
+      (window-divider-last-pixel (:foreground ,weakest))
 
       ;; eshell
-      (eshell-prompt (:foreground ,foreground :bold t))
+      (eshell-prompt (:foreground ,foreground :weight bold))
       (eshell-ls-directory (:foreground ,foreground :weight extra-bold))
       (eshell-ls-archive (:inherit eshell-ls-unreadable))
       (eshell-ls-backup (:inherit eshell-ls-unreadable))
@@ -116,6 +114,9 @@
       (eshell-ls-readonly (:inherit eshell-ls-unreadable))
       (eshell-ls-special (:inherit eshell-ls-unreadable))
       (eshell-ls-symlink (:inherit eshell-ls-unreadable))
+
+      (eshell-syntax-highlighting-shell-command-face (:inherit success :weight extra-bold))
+      (eshell-syntax-highlighting-invalid-face (:inherit error :weight extra-bold))
 
       ;; hl line
       (hl-line (:background ,weakest))
@@ -142,11 +143,9 @@
       (whitespace-space (:background nil :foreground ,weakest))
       (whitespace-indentation (:background nil :foreground ,weakest))
 
-      ;; solaire
-      (solaire-default-face (:background ,weakester))
-      (solaire-fring-face (:background ,weakester))
+      ;; selectrum
+      (completion-annotations (:foreground ,weak))
       ))))
-
 
 (defmacro almost-mono-theme--define-theme ()
   "Define the almost-mono theme."
