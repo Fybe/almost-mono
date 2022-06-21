@@ -94,7 +94,7 @@
       (font-lock-preprocessor-face (:foreground, weak))
       (font-lock-comment-face (:foreground ,weak :italic t))
       (font-lock-string-face (:foreground ,string))
-      (font-lock-doc-face (:inherit font-lock-comment-face :weight semi-bold))
+      (font-lock-doc-face (:inherit font-lock-comment-face :weight bold))
       (line-number (:foreground ,weaker))
       (linum (:inherit line-number))
       (vertical-border (:foreground ,weaker))
