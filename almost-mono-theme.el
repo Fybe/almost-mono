@@ -37,7 +37,8 @@
     (weaker     . "#555555")
     (weakest    . "#333333")
     (highlight  . "#6b83f9")
-    (warning    . "#f28799")
+    (warning    . "#ffaa00")
+    (error      . "#f28799")
     (success    . "#99f287")
     (string     . "#b5e4fc")))
 
@@ -52,6 +53,7 @@
           (weakest    (cdr (assoc 'weakest colors)))
           (highlight  (cdr (assoc 'highlight colors)))
           (warning    (cdr (assoc 'warning colors)))
+          (error      (cdr (assoc 'error colors)))
           (success    (cdr (assoc 'success colors)))
           (string     (cdr (assoc 'string colors))))
      ,@body))
@@ -62,22 +64,24 @@
    (mapcar
     (lambda (entry) (list (car entry) `((t ,@(cdr entry)))))
     `(
-
       ;; default
       (default (:background ,background :foreground ,foreground))
+      (fixed-pitch (:inherit default))
       (fringe  (:background ,background))
       (region  (:background ,weakest))
-      (show-paren-match (:foreground ,success :weight ultra-bold))
-      (show-paren-mismatch (:foreground ,warning :weight ultra-bold))
+      (show-paren-match (:background ,weak :foreground ,background))
+      (show-paren-mismatch (:background ,error :foregound ,background))
       (minibuffer-prompt (:weight extra-bold))
       (isearch (:background ,weak :foreground ,foreground :bold t))
       (lazy-highlight (:background ,weaker :foreground ,foreground))
       (link (:underline t))
       (highlight (:background ,weakest :weight ultra-bold))
+      (italic (:italic t))
+
 
       (success (:foreground ,success :weight extra-bold))
-      (error   (:foreground ,warning :weight extra-bold))
       (warning (:foreground ,warning :weight extra-bold))
+      (error   (:foreground ,error   :weight extra-bold))
 
       ;; mode line
       (mode-line (:background ,background :foreground ,foreground :weight extra-bold))
@@ -86,8 +90,8 @@
       ;; font lock
       (font-lock-keyword-face (:foreground ,highlight :bold t))
       (font-lock-function-name-face (:weight extra-bold))
-      (font-lock-variable-name-face (:foreground ,foreground :italic t))
-      (font-lock-warning-face (:foreground ,foreground :underline (:color ,warning :style wave)))
+      (font-lock-variable-name-face (:foreground ,foreground))
+      (font-lock-warning-face (:foreground ,warning))
       (font-lock-builtin-face (:bold t :foreground ,foreground))
       (font-lock-constant-face (:foreground ,weak))
       (font-lock-type-face (:foreground ,foreground))
@@ -135,6 +139,15 @@
       (corfu-border (:background ,weaker))
       (corfu-current (:inherit highlight))
       (corfu-default (:background ,background :foreground ,foreground))
+
+      ;; flymake
+      (flymake-note (:underline (:color ,weak :style wave)))
+      (flymake-warning (:underline (:color ,warning :style wave)))
+      (flymake-error (:underline (:color ,error :style wave)))
+      (compilation-info (:foreground ,weak :weight extra-bold))
+
+      ;; eglot
+      (eglot-highlight-symbol-face ())
 
       ;; whitespace-mode
       (whitespace-tab (:background nil :foreground ,weaker))
