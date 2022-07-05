@@ -144,7 +144,6 @@
       (flymake-note (:underline (:color ,weak :style wave)))
       (flymake-warning (:underline (:color ,warning :style wave)))
       (flymake-error (:underline (:color ,error :style wave)))
-      (compilation-info (:foreground ,weak :weight extra-bold))
 
       ;; eglot
       (eglot-highlight-symbol-face ())
