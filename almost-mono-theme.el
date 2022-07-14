@@ -149,13 +149,12 @@
       (eglot-highlight-symbol-face ())
 
       ;; whitespace-mode
-      (whitespace-tab (:background nil :foreground ,weaker))
-      (whitespace-space (:background nil :foreground ,weakest))
-      (whitespace-indentation (:background nil :foreground ,weakest))
+      (whitespace-tab (:foreground ,weaker))
+      (whitespace-space (:foreground ,weaker))
+      (whitespace-indentation (:foreground ,weaker))
 
       ;; selectrum
-      (completion-annotations (:foreground ,weak))
-      ))))
+      (completion-annotations (:foreground ,weak))))))
 
 (defmacro almost-mono-theme--define-theme ()
   "Define the almost-mono theme."
