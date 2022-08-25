@@ -93,7 +93,7 @@
       (font-lock-variable-name-face (:foreground ,foreground))
       (font-lock-warning-face (:foreground ,warning))
       (font-lock-builtin-face (:bold t :foreground ,foreground))
-      (font-lock-constant-face (:foreground ,weak))
+      (font-lock-constant-face (:inherit default))
       (font-lock-type-face (:foreground ,foreground))
       (font-lock-preprocessor-face (:foreground, weak))
       (font-lock-comment-face (:foreground ,weak :italic t))
@@ -146,7 +146,7 @@
       (flymake-error (:underline (:color ,error :style wave)))
 
       ;; eglot
-      (eglot-highlight-symbol-face ())
+      (eglot-highlight-symbol-face (:inherit default))
 
       ;; whitespace-mode
       (whitespace-tab (:foreground ,weaker))
@@ -154,7 +154,17 @@
       (whitespace-indentation (:foreground ,weaker))
 
       ;; selectrum
-      (completion-annotations (:foreground ,weak))))))
+      (completion-annotations (:foreground ,weak))
+
+      ;; tree-sitter
+      (tree-sitter-hl-face:operator (:inherit default))
+      (tree-sitter-hl-face:type.builtin (:inherit default))
+      (tree-sitter-hl-face:label (:foreground ,weak))
+      (tree-sitter-hl-face:punctuation.delimiter (:inherit default))
+      (tree-sitter-hl-face:function.call (:inherit default))
+      (tree-sitter-hl-face:method.call (:inherit default))
+      (tree-sitter-hl-face:property (:inherit default))
+      ))))
 
 (defmacro almost-mono-theme--define-theme ()
   "Define the almost-mono theme."
