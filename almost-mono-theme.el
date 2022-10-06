@@ -35,7 +35,7 @@
     (foreground . "#ffffff")
     (weak       . "#aaaaaa")
     (weaker     . "#555555")
-    (weakest    . "#333333")
+    (weakest    . "#3A3A3A")
     (highlight  . "#6b83f9")
     (warning    . "#ffaa00")
     (error      . "#f28799")
@@ -150,7 +150,7 @@
 
       ;; whitespace-mode
       (whitespace-tab (:foreground ,weaker))
-      (whitespace-space (:foreground ,weaker))
+      (whitespace-space (:foreground ,weakest))
       (whitespace-indentation (:foreground ,weaker))
 
       ;; selectrum
