@@ -84,7 +84,7 @@
       (error   (:foreground ,error   :weight extra-bold))
 
       ;; mode line
-      (mode-line (:background ,background :foreground ,foreground :weight extra-bold))
+      (mode-line (:background ,background :foreground ,foreground))
       (mode-line-inactive (:background ,background :foreground ,weak))
 
       ;; font lock
@@ -165,6 +165,7 @@
       (tree-sitter-hl-face:function.macro ())
       (tree-sitter-hl-face:function (:weight extra-bold))
       (tree-sitter-hl-face:keyword (:foreground ,highlight :bold t))
+      (tree-sitter-hl-face:include (:foreground ,highlight :bold t))
       (tree-sitter-hl-face:label (:foreground ,weak))
       (tree-sitter-hl-face:method.call ())
       (tree-sitter-hl-face:operator ())
