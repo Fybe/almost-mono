@@ -71,7 +71,7 @@
       (region  (:background ,weakest))
       (show-paren-match (:background ,weak :foreground ,background))
       (show-paren-mismatch (:background ,error :foregound ,background))
-      (minibuffer-prompt (:weight extra-bold))
+      (minibuffer-prompt (:weight semi-bold))
       (isearch (:background ,weak :foreground ,foreground :bold t))
       (lazy-highlight (:background ,weaker :foreground ,foreground))
       (link (:underline t))
@@ -79,9 +79,9 @@
       (italic (:italic t))
 
 
-      (success (:foreground ,success :weight extra-bold))
-      (warning (:foreground ,warning :weight extra-bold))
-      (error   (:foreground ,error   :weight extra-bold))
+      (success (:foreground ,success :weight semi-bold))
+      (warning (:foreground ,warning :weight semi-bold))
+      (error   (:foreground ,error   :weight semi-bold))
 
       ;; mode line
       (mode-line (:background ,background :foreground ,foreground))
@@ -89,7 +89,7 @@
 
       ;; font lock
       (font-lock-keyword-face (:foreground ,highlight :bold t))
-      (font-lock-function-name-face (:weight extra-bold))
+      (font-lock-function-name-face (:weight semi-bold))
       (font-lock-variable-name-face (:foreground ,foreground))
       (font-lock-warning-face (:foreground ,warning))
       (font-lock-builtin-face (:bold t :foreground ,foreground))
@@ -109,7 +109,7 @@
 
       ;; eshell
       (eshell-prompt (:foreground ,foreground :weight bold))
-      (eshell-ls-directory (:foreground ,foreground :weight extra-bold))
+      (eshell-ls-directory (:foreground ,foreground :weight semi-bold))
       (eshell-ls-archive (:inherit eshell-ls-unreadable))
       (eshell-ls-backup (:inherit eshell-ls-unreadable))
       (eshell-ls-clutter (:foreground ,weak))
@@ -163,9 +163,9 @@
       (tree-sitter-hl-face:constructor ())
       (tree-sitter-hl-face:function.call ())
       (tree-sitter-hl-face:function.macro ())
-      (tree-sitter-hl-face:function (:weight extra-bold))
-      (tree-sitter-hl-face:keyword (:foreground ,highlight :bold t))
-      (tree-sitter-hl-face:include (:foreground ,highlight :bold t))
+      (tree-sitter-hl-face:function (:weight bold))
+      (tree-sitter-hl-face:keyword (:foreground ,highlight :weight semi-bold))
+      (tree-sitter-hl-face:include (:foreground ,highlight :weight semi-bold))
       (tree-sitter-hl-face:label (:foreground ,weak))
       (tree-sitter-hl-face:method.call ())
       (tree-sitter-hl-face:operator ())
