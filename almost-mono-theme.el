@@ -36,11 +36,11 @@
     (weak       . "#aaaaaa")
     (weaker     . "#555555")
     (weakest    . "#3A3A3A")
-    (highlight  . "#6b83f9")
-    (warning    . "#ffaa00")
-    (error      . "#f28799")
-    (success    . "#99f287")
-    (string     . "#b5e4fc")))
+    (highlight  . "#4285f4")
+    (warning    . "#fbbc05")
+    (error      . "#ea4335")
+    (success    . "#34a853")
+    (string     . "#f72585")))
 
 (defmacro almost-mono-theme--with-colors (&rest body)
   "Execute BODY in a scope where the different colors are bound."
