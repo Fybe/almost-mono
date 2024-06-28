@@ -149,9 +149,10 @@
       (eglot-highlight-symbol-face (:inherit default))
 
       ;; whitespace-mode
-      (whitespace-tab (:foreground ,weaker))
+      (whitespace-tab (:foreground ,weakest))
       (whitespace-space (:foreground ,weakest))
-      (whitespace-indentation (:foreground ,weaker))
+      (whitespace-indentation (:foreground ,warning))
+      (whitespace-trailing (:foreground ,error :background ,background))
 
       ;; selectrum
       (completion-annotations (:foreground ,weak))
