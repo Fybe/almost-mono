@@ -205,9 +205,6 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(almost-mono-theme--define-theme almost-mono "almost mono theme" almost-mono-theme-colors)
-(almost-mono-theme--define-theme almost-mono-light "almost mono light theme" almost-mono-light-theme-colors)
-
 (provide 'almost-mono-themes)
 
 ;;; almost-mono-theme.el ends here
