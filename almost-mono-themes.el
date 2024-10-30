@@ -43,16 +43,16 @@
     (string     . "#DEDEC4")))
 
 (defconst almost-mono-light-theme-colors
-  '((background . "#fffcf2")
+  '((background . "#ffffff")
     (foreground . "#000000")
     (weak       . "#252422")
     (weaker     . "#403d39")
-    (weakest    . "#ccc5b9")
-    (highlight  . "#FFA9D8")
-    (warning    . "#FBEDCB")
-    (error      . "#F68D96")
-    (success    . "#B3FAB3")
-    (string     . "#DEDEC4")))
+    (weakest    . "#D9CEC1")
+    (highlight  . "#B30062")
+    (warning    . "#D19A10")
+    (error      . "#EE2F3F")
+    (success    . "#065B06")
+    (string     . "#3B3728")))
 
 (defmacro almost-mono-theme--with-colors (color-palette &rest body)
   "Execute BODY in a scope where the different colors are bound."
@@ -89,6 +89,7 @@
       (link (:underline t))
       (highlight (:background ,weakest :weight ultra-bold))
       (italic (:italic t))
+      (secondary-selection (:background ,warning))
 
 
       (success (:foreground ,success :weight semi-bold))
