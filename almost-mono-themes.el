@@ -33,9 +33,9 @@
 (defconst almost-mono-theme-colors
   '((background . "#000000")
     (foreground . "#fffcf2")
-    (weak       . "#ccc5b9")
-    (weaker     . "#403d39")
-    (weakest    . "#252422")
+    (weak       . "#808080")
+    (weaker     . "#404040")
+    (weakest    . "#202020")
     (highlight  . "#FFA9D8")
     (warning    . "#FBEDCB")
     (error      . "#F68D96")
@@ -84,12 +84,12 @@
       (show-paren-match (:background ,weak :foreground ,background))
       (show-paren-mismatch (:background ,error :foregound ,background))
       (minibuffer-prompt (:weight semi-bold))
-      (isearch (:background ,weak :foreground ,foreground :bold t))
+      (isearch (:background ,weaker :foreground ,foreground))
       (lazy-highlight (:background ,weaker :foreground ,foreground))
       (link (:underline t))
       (highlight (:background ,weakest :weight ultra-bold))
       (italic (:italic t))
-      (secondary-selection (:background ,warning))
+      (secondary-selection (:background ,weaker :distant-foreground ,background :extend t))
 
 
       (success (:foreground ,success :weight semi-bold))
@@ -98,7 +98,7 @@
 
       ;; mode line
       (mode-line (:background ,background :foreground ,foreground))
-      (mode-line-inactive (:background ,background :foreground ,weak))
+      (mode-line-inactive (:background ,background :foreground ,weaker))
 
       ;; font lock
       (font-lock-keyword-face (:foreground ,highlight :bold t))
@@ -116,9 +116,9 @@
       (linum (:inherit line-number))
       (vertical-border (:foreground ,weaker))
       (fill-column-indicator (:foreground ,weakest))
-      (window-divider (:foreground ,weakest))
-      (window-divider-first-pixel (:foreground ,weakest))
-      (window-divider-last-pixel (:foreground ,weakest))
+      (window-divider (:background ,background :foreground ,weakest))
+      (window-divider-first-pixel (:inherit window-divider))
+      (window-divider-last-pixel (:inherit window-divider))
 
       ;; eshell
       (eshell-prompt (:foreground ,foreground :weight bold))
@@ -160,6 +160,7 @@
 
       ;; eglot
       (eglot-highlight-symbol-face (:inherit default))
+      (eglot-mode-line (:weight bold))
 
       ;; whitespace-mode
       (whitespace-tab (:foreground ,weakest))
