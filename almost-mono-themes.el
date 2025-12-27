@@ -159,7 +159,7 @@
       (flymake-error (:underline (:color ,error :style wave)))
 
       ;; eglot
-      (eglot-highlight-symbol-face (:inherit default))
+      (eglot-highlight-symbol-face ())
       (eglot-mode-line (:weight bold))
 
       ;; whitespace-mode
