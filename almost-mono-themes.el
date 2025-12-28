@@ -103,7 +103,7 @@
       ;; font lock
       (font-lock-keyword-face (:foreground ,highlight :weight bold))
       (font-lock-function-name-face (:weight semi-bold))
-      (font-lock-variable-name-face (:foreground ,foreground :slant italic))
+      (font-lock-variable-name-face (:foreground ,foreground))
       (font-lock-warning-face (:foreground ,warning))
       (font-lock-builtin-face (:bold t :foreground ,foreground))
       (font-lock-constant-face (:inherit default))
